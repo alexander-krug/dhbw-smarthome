@@ -1,0 +1,1000 @@
+2024-01-16 20:06:28.197 WARNING (SyncWorker_4) [homeassistant.loader] We found a custom integration hacs which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
+2024-01-16 20:06:35.670 WARNING (Recorder) [homeassistant.components.recorder.util] The system could not validate that the sqlite3 database at //config/home-assistant_v2.db was shutdown cleanly
+2024-01-16 20:07:05.626 WARNING (MainThread) [homeassistant.setup] Setup of schedule is taking over 10 seconds.
+2024-01-16 20:07:05.626 WARNING (MainThread) [homeassistant.setup] Setup of zone is taking over 10 seconds.
+2024-01-16 20:07:05.627 WARNING (MainThread) [homeassistant.setup] Setup of input_boolean is taking over 10 seconds.
+2024-01-16 20:07:05.627 WARNING (MainThread) [homeassistant.setup] Setup of input_datetime is taking over 10 seconds.
+2024-01-16 20:07:05.627 WARNING (MainThread) [homeassistant.setup] Setup of input_number is taking over 10 seconds.
+2024-01-16 20:07:05.628 WARNING (MainThread) [homeassistant.setup] Setup of input_select is taking over 10 seconds.
+2024-01-16 20:07:05.628 WARNING (MainThread) [homeassistant.setup] Setup of input_button is taking over 10 seconds.
+2024-01-16 20:07:05.628 WARNING (MainThread) [homeassistant.setup] Setup of counter is taking over 10 seconds.
+2024-01-16 20:07:05.628 WARNING (MainThread) [homeassistant.setup] Setup of input_text is taking over 10 seconds.
+2024-01-16 20:07:05.629 WARNING (MainThread) [homeassistant.setup] Setup of application_credentials is taking over 10 seconds.
+2024-01-16 20:07:05.984 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:07:19.935 WARNING (DbWorker_1) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', 'weekday 0', '-7 days'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:07:19.937 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:07:20.420 ERROR (MainThread) [homeassistant.components.weather] Platform met does not generate unique IDs. ID home already exists - ignoring weather.forecast_home
+2024-01-16 20:07:20.421 ERROR (MainThread) [homeassistant.components.weather] Platform met does not generate unique IDs. ID home already exists - ignoring weather.forecast_home
+2024-01-16 20:07:50.001 WARNING (DbWorker_2) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:08:03.741 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:08:19.997 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:08:49.997 WARNING (DbWorker_2) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:09:02.233 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:09:20.000 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:09:49.999 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:10:00.072 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities switch.shellyplus1pm_a8032abae930_switch_0 are missing or not currently available
+2024-01-16 20:10:03.118 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:10:03.182 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states/sensor.shellyswitch25_b94fa2_channel_2_energy'. (python-requests/2.25.1)
+2024-01-16 20:10:10.155 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (::1). Requested URL: '/api/states/sensor.temperatur'. (python-requests/2.25.1)
+2024-01-16 20:10:10.181 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (::1). Requested URL: '/api/states/sensor.luftfeuchtigkeit'. (python-requests/2.25.1)
+2024-01-16 20:10:20.054 WARNING (DbWorker_1) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:10:50.009 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:11:02.485 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:11:12.002 ERROR (MainThread) [homeassistant.components.shelly] Error fetching shellyswitch25-98F4ABB94FA2 data: Error fetching data: DeviceConnectionError()
+2024-01-16 20:11:20.013 WARNING (DbWorker_0) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:11:37.457 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from 192.168.73.221 (192.168.73.221). Requested URL: '/auth/login_flow/6d078d1f8d35c8114549df940f3effe8'. (Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36)
+2024-01-16 20:11:50.009 WARNING (DbWorker_0) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:12:02.621 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:12:20.011 WARNING (DbWorker_2) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:12:50.015 WARNING (DbWorker_1) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:13:02.064 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:13:20.017 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:13:50.014 WARNING (DbWorker_2) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:14:02.616 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:14:20.016 WARNING (DbWorker_1) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:14:50.022 WARNING (DbWorker_0) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:15:00.075 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities switch.shellyplus1pm_a8032abae930_switch_0 are missing or not currently available
+2024-01-16 20:15:02.098 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:15:02.159 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states/sensor.shellyswitch25_b94fa2_channel_2_energy'. (python-requests/2.25.1)
+2024-01-16 20:15:07.808 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (::1). Requested URL: '/api/states/sensor.temperatur'. (python-requests/2.25.1)
+2024-01-16 20:15:07.840 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (::1). Requested URL: '/api/states/sensor.luftfeuchtigkeit'. (python-requests/2.25.1)
+2024-01-16 20:15:20.073 WARNING (DbWorker_2) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:15:50.022 WARNING (DbWorker_2) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:16:02.137 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:16:20.028 WARNING (DbWorker_2) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:16:50.026 WARNING (DbWorker_2) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:17:02.872 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:17:20.028 WARNING (DbWorker_1) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:17:50.027 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:18:02.635 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:18:20.035 WARNING (DbWorker_2) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:18:50.033 WARNING (DbWorker_2) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:19:02.100 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:19:20.035 WARNING (DbWorker_1) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:19:50.037 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:20:00.073 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities switch.shellyplus1pm_a8032abae930_switch_0 are missing or not currently available
+2024-01-16 20:20:02.417 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:20:02.455 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states/sensor.shellyswitch25_b94fa2_channel_2_energy'. (python-requests/2.25.1)
+2024-01-16 20:20:20.039 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:20:21.533 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (::1). Requested URL: '/api/states/sensor.temperatur'. (python-requests/2.25.1)
+2024-01-16 20:20:21.558 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (::1). Requested URL: '/api/states/sensor.luftfeuchtigkeit'. (python-requests/2.25.1)
+2024-01-16 20:20:50.041 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:21:02.586 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:21:20.042 WARNING (DbWorker_2) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:21:50.045 WARNING (DbWorker_2) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:22:02.281 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:22:20.051 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:22:50.049 WARNING (DbWorker_1) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:23:02.369 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:23:20.055 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:23:50.052 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:24:02.403 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:24:20.054 WARNING (DbWorker_0) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:24:50.056 WARNING (DbWorker_0) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:25:00.074 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities switch.shellyplus1pm_a8032abae930_switch_0 are missing or not currently available
+2024-01-16 20:25:02.029 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:25:02.077 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states/sensor.shellyswitch25_b94fa2_channel_2_energy'. (python-requests/2.25.1)
+2024-01-16 20:25:05.233 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (::1). Requested URL: '/api/states/sensor.temperatur'. (python-requests/2.25.1)
+2024-01-16 20:25:05.254 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (::1). Requested URL: '/api/states/sensor.luftfeuchtigkeit'. (python-requests/2.25.1)
+2024-01-16 20:25:20.056 WARNING (DbWorker_0) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:25:50.059 WARNING (DbWorker_0) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:26:02.255 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:26:20.059 WARNING (DbWorker_1) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:26:50.060 WARNING (DbWorker_1) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:27:02.343 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:27:20.062 WARNING (DbWorker_0) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:27:50.062 WARNING (DbWorker_0) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:28:02.812 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:28:20.063 WARNING (DbWorker_0) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:28:50.065 WARNING (DbWorker_0) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:29:02.212 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:29:20.067 WARNING (DbWorker_0) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:29:50.071 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:30:00.074 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities switch.shellyplus1pm_a8032abae930_switch_0 are missing or not currently available
+2024-01-16 20:30:02.896 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:30:02.969 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states/sensor.shellyswitch25_b94fa2_channel_2_energy'. (python-requests/2.25.1)
+2024-01-16 20:30:11.497 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (::1). Requested URL: '/api/states/sensor.temperatur'. (python-requests/2.25.1)
+2024-01-16 20:30:11.517 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (::1). Requested URL: '/api/states/sensor.luftfeuchtigkeit'. (python-requests/2.25.1)
+2024-01-16 20:30:20.071 WARNING (DbWorker_1) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:30:50.075 WARNING (DbWorker_1) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:31:02.523 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:31:20.073 WARNING (DbWorker_1) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:31:50.075 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:32:02.080 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:32:20.075 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:32:50.076 WARNING (DbWorker_1) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:33:02.578 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:33:20.082 WARNING (DbWorker_0) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:33:50.085 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:34:02.095 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:34:20.073 WARNING (DbWorker_0) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:34:50.083 WARNING (DbWorker_0) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:35:00.077 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities switch.shellyplus1pm_a8032abae930_switch_0 are missing or not currently available
+2024-01-16 20:35:02.862 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:35:02.900 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states/sensor.shellyswitch25_b94fa2_channel_2_energy'. (python-requests/2.25.1)
+2024-01-16 20:35:04.700 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (::1). Requested URL: '/api/states/sensor.temperatur'. (python-requests/2.25.1)
+2024-01-16 20:35:04.719 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (::1). Requested URL: '/api/states/sensor.luftfeuchtigkeit'. (python-requests/2.25.1)
+2024-01-16 20:35:20.086 WARNING (DbWorker_1) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:35:50.086 WARNING (DbWorker_0) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:36:02.735 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:36:20.088 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:36:50.093 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:37:02.225 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:37:20.094 WARNING (DbWorker_1) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:37:50.091 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:38:02.653 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:38:20.102 WARNING (DbWorker_2) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:38:50.106 WARNING (DbWorker_0) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:39:02.148 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:39:20.094 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:39:50.103 WARNING (DbWorker_1) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:40:02.800 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:40:02.860 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states/sensor.shellyswitch25_b94fa2_channel_2_energy'. (python-requests/2.25.1)
+2024-01-16 20:40:16.720 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (::1). Requested URL: '/api/states/sensor.temperatur'. (python-requests/2.25.1)
+2024-01-16 20:40:16.747 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (::1). Requested URL: '/api/states/sensor.luftfeuchtigkeit'. (python-requests/2.25.1)
+2024-01-16 20:40:20.095 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:40:50.109 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:41:02.771 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-16 20:41:20.106 WARNING (DbWorker_2) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-16 20:41:50.108 WARNING (DbWorker_1) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results

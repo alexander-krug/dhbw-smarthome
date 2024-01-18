@@ -1,0 +1,1917 @@
+- id: '1700510666034'
+  alias: Überhitzungsschutz
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.shellyswitch25_b94fa2_channel_1_power
+    from: '0.0'
+    for:
+      minutes: '{{ states(''input_number.box3'') }}
+
+        '
+  condition:
+  - condition: state
+    entity_id: input_boolean.heizungsautomation
+    state: 'on'
+  action:
+  - service: automation.turn_off
+    data:
+      stop_actions: true
+    target:
+      entity_id:
+      - automation.stromerzeugungsprufung_standard
+      - automation.stromerzeugungsprufung_smart
+  - type: turn_off
+    device_id: 6a8881d9cab80f94d13b08e0613a4ac2
+    entity_id: 45c0e1d22ddad70910b698cbb6067cca
+    domain: switch
+  - delay:
+      hours: 0
+      minutes: '{{ states(''input_number.box4'') }}
+
+        '
+      seconds: 0
+      milliseconds: 0
+  - service: automation.turn_on
+    data: {}
+    target:
+      entity_id:
+      - automation.stromerzeugungsprufung_smart
+      - automation.stromerzeugungsprufung_standard
+  mode: single
+- id: '1703066270644'
+  alias: Stromerzeugungsprüfung Smart
+  description: ''
+  trigger:
+  - platform: time_pattern
+    minutes: /1
+  condition:
+  - condition: template
+    value_template: '{{ now().minute % states(''input_number.box2'')|int == 0 }}
+
+      '
+  - condition: state
+    entity_id: input_boolean.smarte_heizungssteuerung
+    state: 'on'
+  - condition: state
+    entity_id: input_boolean.heizungsautomation
+    state: 'on'
+  action:
+  - if:
+    - condition: numeric_state
+      entity_id: sensor.shellyplus1pm_4855199b1c70_switch_0_power
+      above: input_number.box1
+    then:
+    - if:
+      - condition: or
+        conditions:
+        - condition: numeric_state
+          entity_id: sensor.temperatur
+          below: input_number.box5
+        - condition: numeric_state
+          entity_id: sensor.luftfeuchtigkeit
+          above: input_number.box8
+      then:
+      - type: turn_on
+        device_id: 124205629b3b4967cde8639bf47a809c
+        entity_id: f87aad0c36fe37e4271c83d5794c20c3
+        domain: switch
+      else:
+      - if:
+        - condition: and
+          conditions:
+          - condition: numeric_state
+            entity_id: sensor.temperatur
+            above: input_number.box7
+          - condition: numeric_state
+            entity_id: sensor.luftfeuchtigkeit
+            below: input_number.box6
+        then:
+        - type: turn_off
+          device_id: 124205629b3b4967cde8639bf47a809c
+          entity_id: f87aad0c36fe37e4271c83d5794c20c3
+          domain: switch
+    else:
+    - type: turn_off
+      device_id: 124205629b3b4967cde8639bf47a809c
+      entity_id: f87aad0c36fe37e4271c83d5794c20c3
+      domain: switch
+  mode: single
+- id: '1703067993308'
+  alias: Stromerzeugungsprüfung - Standard
+  description: ''
+  trigger:
+  - platform: time_pattern
+    minutes: /1
+  condition:
+  - condition: template
+    value_template: '{{ now().minute % states(''input_number.box2'')|int == 0 }}
+
+      '
+  - condition: state
+    entity_id: input_boolean.smarte_heizungssteuerung
+    state: 'off'
+  - condition: state
+    entity_id: input_boolean.heizungsautomation
+    state: 'on'
+  action:
+  - if:
+    - condition: numeric_state
+      entity_id: sensor.shellyplus1pm_4855199b1c70_switch_0_power
+      above: input_number.box1
+    then:
+    - type: turn_on
+      device_id: 124205629b3b4967cde8639bf47a809c
+      entity_id: f87aad0c36fe37e4271c83d5794c20c3
+      domain: switch
+    else:
+    - type: turn_off
+      device_id: 124205629b3b4967cde8639bf47a809c
+      entity_id: f87aad0c36fe37e4271c83d5794c20c3
+      domain: switch
+  mode: single
+- id: '1704398943737'
+  alias: Generelle Aktivierung Boiler
+  description: ''
+  trigger:
+  - platform: time_pattern
+    minutes: /1
+  condition:
+  - condition: state
+    entity_id: input_boolean.stromzeiten
+    state: 'on'
+  - condition: state
+    entity_id: input_boolean.stromerzeugung_berucksichtigen
+    state: 'off'
+  action:
+  - if:
+    - condition: state
+      entity_id: input_select.wann_wird_geheizt
+      state: Nur günstigste Zeit
+    then:
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_1
+        before: input_datetime.uhrzeit_2
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: state
+          entity_id: input_select.uhrzeit_1_2
+          state: günstigster Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_2
+        before: input_datetime.uhrzeit_3
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: state
+          entity_id: input_select.uhrzeit_2_3
+          state: günstigster Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_3
+        before: input_datetime.uhrzeit_4
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: state
+          entity_id: input_select.uhrzeit_3_4
+          state: günstigster Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_4
+        before: input_datetime.uhrzeit_5
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: state
+          entity_id: input_select.uhrzeit_4_5
+          state: günstigster Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_5
+        before: input_datetime.uhrzeit_6
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: state
+          entity_id: input_select.uhrzeit_5_6
+          state: günstigster Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_6
+        before: input_datetime.uhrzeit_7
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: state
+          entity_id: input_select.uhrzeit_6_7
+          state: günstigster Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        before: input_datetime.uhrzeit_2_wochenende
+        weekday:
+        - sat
+        - sun
+        after: input_datetime.uhrzeit_1_wochenende
+      then:
+      - if:
+        - condition: state
+          entity_id: input_select.uhrzeit_wochenende
+          state: günstigster Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+  - if:
+    - condition: state
+      entity_id: input_select.wann_wird_geheizt
+      state: Günstigste und mittlere Zeit
+    then:
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_1
+        before: input_datetime.uhrzeit_2
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: input_select.uhrzeit_1_2
+            state: günstigster Preis
+          - condition: state
+            entity_id: input_select.uhrzeit_1_2
+            state: mittlerer Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_2
+        before: input_datetime.uhrzeit_3
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: input_select.uhrzeit_2_3
+            state: günstigster Preis
+          - condition: state
+            entity_id: input_select.uhrzeit_2_3
+            state: mittlerer Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_3
+        before: input_datetime.uhrzeit_4
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: input_select.uhrzeit_3_4
+            state: günstigster Preis
+          - condition: state
+            entity_id: input_select.uhrzeit_3_4
+            state: mittlerer Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_4
+        before: input_datetime.uhrzeit_5
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: input_select.uhrzeit_4_5
+            state: günstigster Preis
+          - condition: state
+            entity_id: input_select.uhrzeit_4_5
+            state: mittlerer Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_5
+        before: input_datetime.uhrzeit_6
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: input_select.uhrzeit_5_6
+            state: günstigster Preis
+          - condition: state
+            entity_id: input_select.uhrzeit_5_6
+            state: mittlerer Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_6
+        before: input_datetime.uhrzeit_7
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: input_select.uhrzeit_6_7
+            state: günstigster Preis
+          - condition: state
+            entity_id: input_select.uhrzeit_6_7
+            state: mittlerer Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        before: input_datetime.uhrzeit_2_wochenende
+        weekday:
+        - sat
+        - sun
+        after: input_datetime.uhrzeit_1_wochenende
+      then:
+      - if:
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: input_select.uhrzeit_wochenende
+            state: günstigster Preis
+          - condition: state
+            entity_id: input_select.uhrzeit_wochenende
+            state: mittlerer Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+  mode: single
+- id: '1704473533854'
+  alias: Generelle Aktivierung mit Stromerzeugung Logik
+  description: ''
+  trigger:
+  - platform: time_pattern
+    minutes: /5
+  condition:
+  - condition: state
+    entity_id: input_boolean.stromzeiten
+    state: 'on'
+  - condition: state
+    entity_id: input_boolean.stromerzeugung_berucksichtigen
+    state: 'on'
+  - condition: state
+    entity_id: switch.shellyplus1pm_a8032abae930_switch_0
+    state: 'off'
+  - condition: state
+    entity_id: input_boolean.priorisierung_heizung
+    state: 'on'
+  action:
+  - if:
+    - condition: and
+      conditions:
+      - condition: state
+        entity_id: input_select.wann_wird_geheizt
+        state: Nur günstigste Zeit
+      - condition: not
+        conditions:
+        - condition: numeric_state
+          entity_id: sensor.shellyplus1pm_4855199b1c70_switch_0_power
+          above: input_number.box9
+    then:
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_1
+        before: input_datetime.uhrzeit_2
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: state
+          entity_id: input_select.uhrzeit_1_2
+          state: günstigster Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_2
+        before: input_datetime.uhrzeit_3
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: state
+          entity_id: input_select.uhrzeit_2_3
+          state: günstigster Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_3
+        before: input_datetime.uhrzeit_4
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: state
+          entity_id: input_select.uhrzeit_3_4
+          state: günstigster Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_4
+        before: input_datetime.uhrzeit_5
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: state
+          entity_id: input_select.uhrzeit_4_5
+          state: günstigster Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_5
+        before: input_datetime.uhrzeit_6
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: state
+          entity_id: input_select.uhrzeit_5_6
+          state: günstigster Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_6
+        before: input_datetime.uhrzeit_7
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: state
+          entity_id: input_select.uhrzeit_6_7
+          state: günstigster Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        before: input_datetime.uhrzeit_2_wochenende
+        weekday:
+        - sat
+        - sun
+        after: input_datetime.uhrzeit_1_wochenende
+      then:
+      - if:
+        - condition: state
+          entity_id: input_select.uhrzeit_wochenende
+          state: günstigster Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+  - if:
+    - condition: and
+      conditions:
+      - condition: state
+        entity_id: input_select.wann_wird_geheizt
+        state: Günstigste und mittlere Zeit
+      - condition: not
+        conditions:
+        - condition: numeric_state
+          entity_id: sensor.shellyplus1pm_4855199b1c70_switch_0_power
+          above: input_number.box9
+    then:
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_1
+        before: input_datetime.uhrzeit_2
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: input_select.uhrzeit_1_2
+            state: günstigster Preis
+          - condition: state
+            entity_id: input_select.uhrzeit_1_2
+            state: mittlerer Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_2
+        before: input_datetime.uhrzeit_3
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: input_select.uhrzeit_2_3
+            state: günstigster Preis
+          - condition: state
+            entity_id: input_select.uhrzeit_2_3
+            state: mittlerer Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_3
+        before: input_datetime.uhrzeit_4
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: input_select.uhrzeit_3_4
+            state: günstigster Preis
+          - condition: state
+            entity_id: input_select.uhrzeit_3_4
+            state: mittlerer Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_4
+        before: input_datetime.uhrzeit_5
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: input_select.uhrzeit_4_5
+            state: günstigster Preis
+          - condition: state
+            entity_id: input_select.uhrzeit_4_5
+            state: mittlerer Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_5
+        before: input_datetime.uhrzeit_6
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: input_select.uhrzeit_5_6
+            state: günstigster Preis
+          - condition: state
+            entity_id: input_select.uhrzeit_5_6
+            state: mittlerer Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_6
+        before: input_datetime.uhrzeit_7
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: input_select.uhrzeit_6_7
+            state: günstigster Preis
+          - condition: state
+            entity_id: input_select.uhrzeit_6_7
+            state: mittlerer Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        before: input_datetime.uhrzeit_2_wochenende
+        weekday:
+        - sat
+        - sun
+        after: input_datetime.uhrzeit_1_wochenende
+      then:
+      - if:
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: input_select.uhrzeit_wochenende
+            state: günstigster Preis
+          - condition: state
+            entity_id: input_select.uhrzeit_wochenende
+            state: mittlerer Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+  - if:
+    - condition: numeric_state
+      entity_id: sensor.shellyplus1pm_4855199b1c70_switch_0_power
+      above: input_number.box9
+    then:
+    - type: turn_on
+      device_id: 5b72e2b84528c82916d4a78c5748433a
+      entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+      domain: switch
+    else: []
+  mode: single
+- id: '1704474363901'
+  alias: Boiler Zeitraum
+  description: ''
+  trigger:
+  - platform: time_pattern
+    seconds: /10
+  condition:
+  - condition: state
+    entity_id: input_boolean.generelle_aktivierung
+    state: 'on'
+  action:
+  - if:
+    - condition: template
+      value_template: '{{ state_attr(''input_datetime.start_generelle_aktivierung'',
+        ''timestamp'') < now().timestamp() < state_attr(''input_datetime.ende_generelle_aktivierung'',
+        ''timestamp'') }}'
+    then:
+    - type: turn_on
+      device_id: 5b72e2b84528c82916d4a78c5748433a
+      entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+      domain: switch
+    else:
+    - type: turn_off
+      device_id: 5b72e2b84528c82916d4a78c5748433a
+      entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+      domain: switch
+  mode: single
+- id: '1704474994356'
+  alias: Generelle Heizung anschalten
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - input_boolean.generelle_aktivierung
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.stromzeiten
+  - service: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.stromerzeugung_berucksichtigen
+  mode: single
+- id: '1704475072965'
+  alias: Zeitgeschaltet anschalten
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - input_boolean.stromzeiten
+    from: 'off'
+    to: 'on'
+  - platform: state
+    entity_id:
+    - input_boolean.stromerzeugung_berucksichtigen
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.generelle_aktivierung
+    data: {}
+  mode: single
+- id: '1704475187045'
+  alias: Zusätzlich zeitgeschaltet anschalten
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - input_boolean.stromerzeugung_berucksichtigen
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.stromzeiten
+    data: {}
+  mode: single
+- id: '1704476349419'
+  alias: Generelle Aktivierung mit Stromerzeugung und Heizung Logik
+  description: ''
+  trigger:
+  - platform: time_pattern
+    minutes: /5
+  condition:
+  - condition: state
+    entity_id: input_boolean.stromzeiten
+    state: 'on'
+  - condition: state
+    entity_id: input_boolean.stromerzeugung_berucksichtigen
+    state: 'on'
+  - condition: state
+    entity_id: switch.shellyplus1pm_a8032abae930_switch_0
+    state: 'on'
+  - condition: state
+    entity_id: input_boolean.priorisierung_heizung
+    state: 'on'
+  action:
+  - if:
+    - condition: and
+      conditions:
+      - condition: state
+        entity_id: input_select.wann_wird_geheizt
+        state: Nur günstigste Zeit
+      - condition: not
+        conditions:
+        - condition: numeric_state
+          entity_id: sensor.shellyplus1pm_4855199b1c70_switch_0_power
+          above: sensor.summe_solarbedarf
+    then:
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_1
+        before: input_datetime.uhrzeit_2
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: state
+          entity_id: input_select.uhrzeit_1_2
+          state: günstigster Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_2
+        before: input_datetime.uhrzeit_3
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: state
+          entity_id: input_select.uhrzeit_2_3
+          state: günstigster Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_3
+        before: input_datetime.uhrzeit_4
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: state
+          entity_id: input_select.uhrzeit_3_4
+          state: günstigster Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_4
+        before: input_datetime.uhrzeit_5
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: state
+          entity_id: input_select.uhrzeit_4_5
+          state: günstigster Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_5
+        before: input_datetime.uhrzeit_6
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: state
+          entity_id: input_select.uhrzeit_5_6
+          state: günstigster Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_6
+        before: input_datetime.uhrzeit_7
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: state
+          entity_id: input_select.uhrzeit_6_7
+          state: günstigster Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        before: input_datetime.uhrzeit_2_wochenende
+        weekday:
+        - sat
+        - sun
+        after: input_datetime.uhrzeit_1_wochenende
+      then:
+      - if:
+        - condition: state
+          entity_id: input_select.uhrzeit_wochenende
+          state: günstigster Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+  - if:
+    - condition: and
+      conditions:
+      - condition: state
+        entity_id: input_select.wann_wird_geheizt
+        state: Günstigste und mittlere Zeit
+      - condition: not
+        conditions:
+        - condition: numeric_state
+          entity_id: sensor.shellyplus1pm_4855199b1c70_switch_0_power
+          above: sensor.summe_solarbedarf
+    then:
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_1
+        before: input_datetime.uhrzeit_2
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: input_select.uhrzeit_1_2
+            state: günstigster Preis
+          - condition: state
+            entity_id: input_select.uhrzeit_1_2
+            state: mittlerer Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_2
+        before: input_datetime.uhrzeit_3
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: input_select.uhrzeit_2_3
+            state: günstigster Preis
+          - condition: state
+            entity_id: input_select.uhrzeit_2_3
+            state: mittlerer Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_3
+        before: input_datetime.uhrzeit_4
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: input_select.uhrzeit_3_4
+            state: günstigster Preis
+          - condition: state
+            entity_id: input_select.uhrzeit_3_4
+            state: mittlerer Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_4
+        before: input_datetime.uhrzeit_5
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: input_select.uhrzeit_4_5
+            state: günstigster Preis
+          - condition: state
+            entity_id: input_select.uhrzeit_4_5
+            state: mittlerer Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_5
+        before: input_datetime.uhrzeit_6
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: input_select.uhrzeit_5_6
+            state: günstigster Preis
+          - condition: state
+            entity_id: input_select.uhrzeit_5_6
+            state: mittlerer Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_6
+        before: input_datetime.uhrzeit_7
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: input_select.uhrzeit_6_7
+            state: günstigster Preis
+          - condition: state
+            entity_id: input_select.uhrzeit_6_7
+            state: mittlerer Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        before: input_datetime.uhrzeit_2_wochenende
+        weekday:
+        - sat
+        - sun
+        after: input_datetime.uhrzeit_1_wochenende
+      then:
+      - if:
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: input_select.uhrzeit_wochenende
+            state: günstigster Preis
+          - condition: state
+            entity_id: input_select.uhrzeit_wochenende
+            state: mittlerer Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+  - if:
+    - condition: numeric_state
+      entity_id: sensor.shellyplus1pm_4855199b1c70_switch_0_power
+      above: sensor.summe_solarbedarf
+    then:
+    - type: turn_on
+      device_id: 5b72e2b84528c82916d4a78c5748433a
+      entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+      domain: switch
+    else: []
+  mode: single
+- id: '1704477710459'
+  alias: Generelle Aktivierung mit Stromerzeugung
+  description: ''
+  trigger:
+  - platform: time_pattern
+    minutes: /5
+  condition:
+  - condition: state
+    entity_id: input_boolean.stromzeiten
+    state: 'on'
+  - condition: state
+    entity_id: input_boolean.stromerzeugung_berucksichtigen
+    state: 'on'
+  - condition: state
+    state: 'off'
+    entity_id: input_boolean.priorisierung_heizung
+  action:
+  - if:
+    - condition: and
+      conditions:
+      - condition: state
+        entity_id: input_select.wann_wird_geheizt
+        state: Nur günstigste Zeit
+      - condition: not
+        conditions:
+        - condition: numeric_state
+          entity_id: sensor.shellyplus1pm_4855199b1c70_switch_0_power
+          above: input_number.box9
+    then:
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_1
+        before: input_datetime.uhrzeit_2
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: state
+          entity_id: input_select.uhrzeit_1_2
+          state: günstigster Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_2
+        before: input_datetime.uhrzeit_3
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: state
+          entity_id: input_select.uhrzeit_2_3
+          state: günstigster Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_3
+        before: input_datetime.uhrzeit_4
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: state
+          entity_id: input_select.uhrzeit_3_4
+          state: günstigster Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_4
+        before: input_datetime.uhrzeit_5
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: state
+          entity_id: input_select.uhrzeit_4_5
+          state: günstigster Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_5
+        before: input_datetime.uhrzeit_6
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: state
+          entity_id: input_select.uhrzeit_5_6
+          state: günstigster Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_6
+        before: input_datetime.uhrzeit_7
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: state
+          entity_id: input_select.uhrzeit_6_7
+          state: günstigster Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        before: input_datetime.uhrzeit_2_wochenende
+        weekday:
+        - sat
+        - sun
+        after: input_datetime.uhrzeit_1_wochenende
+      then:
+      - if:
+        - condition: state
+          entity_id: input_select.uhrzeit_wochenende
+          state: günstigster Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+  - if:
+    - condition: and
+      conditions:
+      - condition: state
+        entity_id: input_select.wann_wird_geheizt
+        state: Günstigste und mittlere Zeit
+      - condition: not
+        conditions:
+        - condition: numeric_state
+          entity_id: sensor.shellyplus1pm_4855199b1c70_switch_0_power
+          above: input_number.box9
+    then:
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_1
+        before: input_datetime.uhrzeit_2
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: input_select.uhrzeit_1_2
+            state: günstigster Preis
+          - condition: state
+            entity_id: input_select.uhrzeit_1_2
+            state: mittlerer Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_2
+        before: input_datetime.uhrzeit_3
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: input_select.uhrzeit_2_3
+            state: günstigster Preis
+          - condition: state
+            entity_id: input_select.uhrzeit_2_3
+            state: mittlerer Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_3
+        before: input_datetime.uhrzeit_4
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: input_select.uhrzeit_3_4
+            state: günstigster Preis
+          - condition: state
+            entity_id: input_select.uhrzeit_3_4
+            state: mittlerer Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_4
+        before: input_datetime.uhrzeit_5
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: input_select.uhrzeit_4_5
+            state: günstigster Preis
+          - condition: state
+            entity_id: input_select.uhrzeit_4_5
+            state: mittlerer Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_5
+        before: input_datetime.uhrzeit_6
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: input_select.uhrzeit_5_6
+            state: günstigster Preis
+          - condition: state
+            entity_id: input_select.uhrzeit_5_6
+            state: mittlerer Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        after: input_datetime.uhrzeit_6
+        before: input_datetime.uhrzeit_7
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      then:
+      - if:
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: input_select.uhrzeit_6_7
+            state: günstigster Preis
+          - condition: state
+            entity_id: input_select.uhrzeit_6_7
+            state: mittlerer Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+    - if:
+      - condition: time
+        before: input_datetime.uhrzeit_2_wochenende
+        weekday:
+        - sat
+        - sun
+        after: input_datetime.uhrzeit_1_wochenende
+      then:
+      - if:
+        - condition: or
+          conditions:
+          - condition: state
+            entity_id: input_select.uhrzeit_wochenende
+            state: günstigster Preis
+          - condition: state
+            entity_id: input_select.uhrzeit_wochenende
+            state: mittlerer Preis
+        then:
+        - type: turn_on
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+        else:
+        - type: turn_off
+          device_id: 5b72e2b84528c82916d4a78c5748433a
+          entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+          domain: switch
+  - if:
+    - condition: numeric_state
+      entity_id: sensor.shellyplus1pm_4855199b1c70_switch_0_power
+      above: input_number.box9
+    then:
+    - type: turn_on
+      device_id: 5b72e2b84528c82916d4a78c5748433a
+      entity_id: c49bbc857ff9c51e0ba961e57ef149fe
+      domain: switch
+    else: []
+  mode: single

@@ -1,0 +1,113 @@
+
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+  json_attributes:
+      - devices
+    resource: http://127.0.0.1:4000/api/getJSON
+    method: GET
+    headers:
+     auth: Yoi97MtSTv4^vLp5Wq^xmW@GfWVh9XV8$EPNKcr44&kpuySy3JS@gaygqvC%A5Wh26vYw
+    value_template: "{{ value_json.success }}"
+    scan_interval: 10
+
+  - platform: template
+    sensors:
+      temperatur:
+        friendly_name: "Hobbyzimmer-Temperatur"
+        value_template: "{{ state_attr('sensor.Hobbyzimmer', 'devices')[0]['measurement']['t1'] }}"
+        unit_of_measurement: "°C"
+      luftfeuchtigkeit:
+        friendly_name: "Hobbyzimmer-Luftfeuchtigkeit"
+        value_template: "{{ state_attr('sensor.Hobbyzimmer', 'devices')[0]['measurement']['h'] }}"
+        unit_of_measurement: "°C"
+
+input_number:
+  box1:
+    name: Minimale Stromerzeugung
+    initial: 300
+    min: 0
+    max: 99999999
+    step: 1
+    mode: box
+    unit_of_measurement: W
+    icon: mdi:solar-panel-large
+
+  box2:
+    name: Periode der Überprüfung
+    initial: 5
+    min: 0
+    max: 99999999
+    step: 1
+    mode: box
+    unit_of_measurement: Min
+    icon: mdi:av-timer
+
+  box3:
+    name: Maximale Laufzeit Heizung
+    initial: 120
+    min: 0
+    max: 99999999
+    step: 1
+    mode: box
+    unit_of_measurement: Min
+    icon: mdi:av-timer
+
+  box4:
+    name: Abkühldauer
+    initial: 15
+    min: 0
+    max: 99999999
+    step: 1
+    mode: box
+    unit_of_measurement: Min
+    icon: mdi:av-timer
+
+  box5:
+    name: Unteres Temperaturlimit Heizung
+    initial: 19
+    min: 0
+    max: 99999999
+    step: 1
+    mode: box
+    unit_of_measurement: °C
+    icon: mdi:home-thermometer-outline
+
+  box6:
+    name: Unteres Luftfeuchtigkeitslimit Heizung
+    initial: 70
+    min: 0
+    max: 99999999
+    step: 1
+    mode: box
+    unit_of_measurement: "%"
+    icon: mdi:water-percent
+
+  box7:
+    name: Oberes Temperaturlimit Heizung
+    initial: 21
+    min: 0
+    max: 99999999
+    step: 1
+    mode: box
+    unit_of_measurement: °C
+    icon: mdi:home-thermometer-outline
+
+  box8:
+    name: Oberes Luftfeuchtigkeitslimit Heizung
+    initial: 75
+    min: 0
+    max: 99999999
+    step: 1
+    mode: box
+    unit_of_measurement: "%"
+    icon: mdi:water-percent
+

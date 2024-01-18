@@ -1,0 +1,156 @@
+2024-01-03 16:23:37.669 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration hacs which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
+2024-01-03 16:23:49.874 WARNING (Recorder) [homeassistant.components.recorder.util] The system could not validate that the sqlite3 database at //config/home-assistant_v2.db was shutdown cleanly
+2024-01-03 16:23:55.883 WARNING (Recorder) [homeassistant.components.recorder.util] Ended unfinished session (id=31 from 2023-12-19 13:19:38.087217)
+2024-01-03 16:24:16.703 WARNING (MainThread) [homeassistant.setup] Setup of bluetooth is taking over 10 seconds.
+2024-01-03 16:24:28.773 WARNING (MainThread) [homeassistant.setup] Setup of input_number is taking over 10 seconds.
+2024-01-03 16:24:29.355 WARNING (MainThread) [homeassistant.setup] Setup of input_datetime is taking over 10 seconds.
+2024-01-03 16:24:37.275 WARNING (MainThread) [homeassistant.setup] Setup of input_boolean is taking over 10 seconds.
+2024-01-03 16:24:37.323 WARNING (MainThread) [homeassistant.setup] Setup of input_text is taking over 10 seconds.
+2024-01-03 16:24:54.553 WARNING (DbWorker_0) [homeassistant.components.sql.sensor] Select ROUND(SUM(state), 2) as state FROM (
+
+SELECT
+MAX(states.state) as state, date(last_updated_ts, 'unixepoch') as day
+FROM
+ states
+INNER JOIN states_meta ON
+	states.metadata_id = states_meta.metadata_id
+WHERE states_meta.entity_id = 'sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND last_updated_ts >= strftime('%s',datetime('now', 'start of year'))
+
+
+AND states.state != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-03 16:24:54.565 WARNING (DbWorker_1) [homeassistant.components.sql.sensor] Select ROUND(SUM(state), 2) as state FROM (
+
+SELECT
+MAX(states.state) as state, date(last_updated_ts, 'unixepoch') as day
+FROM
+ states
+INNER JOIN states_meta ON
+	states.metadata_id = states_meta.metadata_id
+WHERE states_meta.entity_id = 'sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND last_updated_ts >= strftime('%s',datetime('now', 'start of month'))
+AND states.state != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-03 16:24:54.612 WARNING (DbWorker_1) [homeassistant.components.sql.sensor] Select ROUND(SUM(state), 2) as state FROM (
+
+SELECT
+MAX(states.state) as state, date(last_updated_ts, 'unixepoch') as day
+FROM
+ states
+INNER JOIN states_meta ON
+	states.metadata_id = states_meta.metadata_id
+WHERE states_meta.entity_id = 'sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND last_updated_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND last_updated_ts < strftime('%s',datetime('now', 'start of day'))
+
+AND states.state != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-03 16:24:54.632 WARNING (DbWorker_1) [homeassistant.components.sql.sensor] Select ROUND(SUM(state), 2) as state FROM (
+
+SELECT
+MAX(states.state) as state, date(last_updated_ts, 'unixepoch') as day
+FROM
+ states
+INNER JOIN states_meta ON
+	states.metadata_id = states_meta.metadata_id
+WHERE states_meta.entity_id = 'sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND last_updated_ts >= strftime('%s',datetime('now', 'weekday 0', '-14 days'))
+AND last_updated_ts < strftime('%s',datetime('now', 'weekday 0', '-7 days'))
+
+
+AND states.state != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-03 16:24:54.651 WARNING (DbWorker_1) [homeassistant.components.sql.sensor] Select ROUND(SUM(state), 2) as state FROM (
+
+SELECT
+MAX(states.state) as state, date(last_updated_ts, 'unixepoch') as day
+FROM
+ states
+INNER JOIN states_meta ON
+	states.metadata_id = states_meta.metadata_id
+WHERE states_meta.entity_id = 'sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND last_updated_ts >= strftime('%s',datetime('now', 'weekday 0', '-7 days'))
+
+AND states.state != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-03 16:24:54.652 WARNING (DbWorker_0) [homeassistant.components.sql.sensor] SELECT
+ROUND(SUM(states.state),2) as state, strftime('%Y-%m-%d', last_updated_ts) as day
+FROM
+ states
+INNER JOIN states_meta ON
+	states.metadata_id = states_meta.metadata_id
+WHERE states_meta.entity_id = 'sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND last_updated_ts >= strftime('%s',datetime('now', '-1 month', 'start of month'))
+AND last_updated_ts < strftime('%s',datetime('now', 'start of month'))
+AND states.state != 'unavailable'
+Group by day LIMIT 1; returned no results
+2024-01-03 16:24:54.727 WARNING (DbWorker_1) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', 'start of month'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-03 16:24:54.729 WARNING (DbWorker_2) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', 'start of year'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-03 16:24:54.733 WARNING (DbWorker_0) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-03 16:24:54.735 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', 'weekday 0', '-7 days'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-03 16:24:54.744 WARNING (DbWorker_1) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', 'weekday 0', '-14 days'))
+AND created_ts < strftime('%s',datetime('now', 'weekday 0', '-7 days'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-03 16:25:00.247 ERROR (MainThread) [homeassistant.components.automation.stromerzeugungsprufung_standard] Stromerzeugungsprüfung - Standard: If at step 1: Error executing script. Service not found for device at pos 1: Unable to find service switch.turn_off
+2024-01-03 16:25:00.249 ERROR (MainThread) [homeassistant.components.automation.stromerzeugungsprufung_standard] Stromerzeugungsprüfung - Standard: Error executing script. Service not found for if at pos 1: Unable to find service switch.turn_off

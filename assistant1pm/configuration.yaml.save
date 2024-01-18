@@ -1,0 +1,26 @@
+
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+sensor:
+  - platform: statistics
+    name: "Bathroom humidity mean over last 24 hours"
+    entity_id: sensor.shellyswitch25_b94fa2_channel_1_power
+    state_characteristic: change
+    max_age:
+      
+sensor:
+  - platform: statistics
+    name: "Bathroom humidity mean over last 24 hours"
+    entity_id: sensor.bathroom_humidity
+    state_characteristic: mean
+    max_age:
+      hours: 24

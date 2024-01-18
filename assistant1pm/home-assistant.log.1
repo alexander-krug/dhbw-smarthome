@@ -1,0 +1,787 @@
+2024-01-12 16:29:11.668 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration hacs which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
+2024-01-12 16:29:18.750 WARNING (Recorder) [homeassistant.components.recorder.util] The system could not validate that the sqlite3 database at //config/home-assistant_v2.db was shutdown cleanly
+2024-01-12 16:29:43.990 WARNING (MainThread) [homeassistant.setup] Setup of schedule is taking over 10 seconds.
+2024-01-12 16:29:44.294 WARNING (MainThread) [homeassistant.setup] Setup of input_select is taking over 10 seconds.
+2024-01-12 16:29:44.295 WARNING (MainThread) [homeassistant.setup] Setup of input_number is taking over 10 seconds.
+2024-01-12 16:29:44.354 WARNING (MainThread) [homeassistant.setup] Setup of input_datetime is taking over 10 seconds.
+2024-01-12 16:29:44.431 WARNING (MainThread) [homeassistant.setup] Setup of input_boolean is taking over 10 seconds.
+2024-01-12 16:29:45.590 WARNING (MainThread) [homeassistant.setup] Setup of input_text is taking over 10 seconds.
+2024-01-12 16:29:50.720 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-12 16:29:51.702 ERROR (MainThread) [homeassistant.components.weather] Platform met does not generate unique IDs. ID home already exists - ignoring weather.forecast_home
+2024-01-12 16:29:51.717 ERROR (MainThread) [homeassistant.components.weather] Platform met does not generate unique IDs. ID home already exists - ignoring weather.forecast_home
+2024-01-12 16:30:00.466 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities switch.shellyplus1pm_a8032abae930_switch_0 are missing or not currently available
+2024-01-12 16:30:02.364 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-12 16:30:02.414 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states/sensor.shellyswitch25_b94fa2_channel_2_energy'. (python-requests/2.25.1)
+2024-01-12 16:30:04.586 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (::1). Requested URL: '/api/states/sensor.temperatur'. (python-requests/2.25.1)
+2024-01-12 16:30:04.606 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (::1). Requested URL: '/api/states/sensor.luftfeuchtigkeit'. (python-requests/2.25.1)
+2024-01-12 16:30:16.526 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from 192.168.141.221 (192.168.141.221). Requested URL: '/api/states'. (PostmanRuntime/7.35.0)
+2024-01-12 16:30:20.787 WARNING (DbWorker_1) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-12 16:30:50.776 WARNING (DbWorker_2) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-12 16:31:02.683 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-12 16:31:20.758 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-12 16:31:50.772 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-12 16:32:02.244 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-12 16:32:20.768 WARNING (DbWorker_2) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-12 16:32:42.160 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states/sensor.shellyswitch25_b94fa2_channel_2_energy'. (python-requests/2.25.1)
+2024-01-12 16:32:50.769 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-12 16:33:02.680 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-12 16:33:20.770 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-12 16:33:50.774 WARNING (DbWorker_0) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-12 16:34:02.068 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-12 16:34:20.774 WARNING (DbWorker_2) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-12 16:34:50.774 WARNING (DbWorker_0) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-12 16:35:00.468 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities switch.shellyplus1pm_a8032abae930_switch_0 are missing or not currently available
+2024-01-12 16:35:02.672 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-12 16:35:02.712 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states/sensor.shellyswitch25_b94fa2_channel_2_energy'. (python-requests/2.25.1)
+2024-01-12 16:35:07.128 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (::1). Requested URL: '/api/states/sensor.temperatur'. (python-requests/2.25.1)
+2024-01-12 16:35:07.154 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (::1). Requested URL: '/api/states/sensor.luftfeuchtigkeit'. (python-requests/2.25.1)
+2024-01-12 16:35:20.779 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-12 16:35:50.777 WARNING (DbWorker_1) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-12 16:36:02.180 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-12 16:36:20.770 WARNING (DbWorker_2) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-12 16:36:50.780 WARNING (DbWorker_1) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-12 16:37:02.527 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-12 16:37:20.771 WARNING (DbWorker_2) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-12 16:37:50.784 WARNING (DbWorker_1) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-12 16:38:01.927 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-12 16:38:20.785 WARNING (DbWorker_0) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-12 16:38:24.181 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities switch.shellyplus1pm_a8032abad454_switch_0 are missing or not currently available
+2024-01-12 16:38:24.867 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities switch.shellyplus1pm_a8032abad454_switch_0 are missing or not currently available
+2024-01-12 16:38:50.784 WARNING (DbWorker_2) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-12 16:39:00.114 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities switch.shellyplus1pm_a8032abad454_switch_0 are missing or not currently available
+2024-01-12 16:39:02.421 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-12 16:39:20.787 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-12 16:39:50.790 WARNING (DbWorker_2) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-12 16:40:00.472 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities switch.shellyplus1pm_a8032abae930_switch_0 are missing or not currently available
+2024-01-12 16:40:02.966 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-12 16:40:03.016 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states/sensor.shellyswitch25_b94fa2_channel_2_energy'. (python-requests/2.25.1)
+2024-01-12 16:40:06.013 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (::1). Requested URL: '/api/states/sensor.temperatur'. (python-requests/2.25.1)
+2024-01-12 16:40:06.031 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (::1). Requested URL: '/api/states/sensor.luftfeuchtigkeit'. (python-requests/2.25.1)
+2024-01-12 16:40:20.789 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-12 16:40:50.787 WARNING (DbWorker_1) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-12 16:41:02.035 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-12 16:41:20.789 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-12 16:41:28.596 ERROR (MainThread) [frontend.js.latest.202401040] Uncaught error from Chrome 120.0.0.0 on Windows 10
+TypeError: Cannot read properties of undefined (reading 'label')
+title: (src/panels/lovelace/cards/energy/common/energy-chart-options.ts:122:33)
+call (src/plugins/plugin.tooltip.js:441:33)
+invokeCallbackWithFallback (src/plugins/plugin.tooltip.js:530:18)
+getTitle (src/plugins/plugin.tooltip.js:647:24)
+update (src/plugins/plugin.tooltip.js:1160:13)
+handleEvent (src/plugins/plugin.tooltip.js:1261:24)
+apply (src/helpers/helpers.core.ts:109:14)
+method (src/core/core.plugins.js:60:23)
+_notify (src/core/core.plugins.js:42:24)
+notify (src/core/core.controller.js:1153:25)
+2024-01-12 16:41:28.610 ERROR (MainThread) [frontend.js.latest.202401040] Uncaught error from Chrome 120.0.0.0 on Windows 10
+TypeError: Cannot read properties of undefined (reading 'label')
+title: (src/panels/lovelace/cards/energy/common/energy-chart-options.ts:122:33)
+call (src/plugins/plugin.tooltip.js:441:33)
+invokeCallbackWithFallback (src/plugins/plugin.tooltip.js:530:18)
+getTitle (src/plugins/plugin.tooltip.js:647:24)
+update (src/plugins/plugin.tooltip.js:1160:13)
+handleEvent (src/plugins/plugin.tooltip.js:1261:24)
+apply (src/helpers/helpers.core.ts:109:14)
+method (src/core/core.plugins.js:60:23)
+_notify (src/core/core.plugins.js:42:24)
+notify (src/core/core.controller.js:1153:25)
+2024-01-12 16:41:28.611 ERROR (MainThread) [frontend.js.latest.202401040] Uncaught error from Chrome 120.0.0.0 on Windows 10
+TypeError: Cannot read properties of undefined (reading 'label')
+title: (src/panels/lovelace/cards/energy/common/energy-chart-options.ts:122:33)
+call (src/plugins/plugin.tooltip.js:441:33)
+invokeCallbackWithFallback (src/plugins/plugin.tooltip.js:530:18)
+getTitle (src/plugins/plugin.tooltip.js:647:24)
+update (src/plugins/plugin.tooltip.js:1160:13)
+handleEvent (src/plugins/plugin.tooltip.js:1261:24)
+apply (src/helpers/helpers.core.ts:109:14)
+method (src/core/core.plugins.js:60:23)
+_notify (src/core/core.plugins.js:42:24)
+notify (src/core/core.controller.js:1153:25)
+2024-01-12 16:41:28.612 ERROR (MainThread) [frontend.js.latest.202401040] Uncaught error from Chrome 120.0.0.0 on Windows 10
+TypeError: Cannot read properties of undefined (reading 'label')
+title: (src/panels/lovelace/cards/energy/common/energy-chart-options.ts:122:33)
+call (src/plugins/plugin.tooltip.js:441:33)
+invokeCallbackWithFallback (src/plugins/plugin.tooltip.js:530:18)
+getTitle (src/plugins/plugin.tooltip.js:647:24)
+update (src/plugins/plugin.tooltip.js:1160:13)
+handleEvent (src/plugins/plugin.tooltip.js:1261:24)
+apply (src/helpers/helpers.core.ts:109:14)
+method (src/core/core.plugins.js:60:23)
+_notify (src/core/core.plugins.js:42:24)
+notify (src/core/core.controller.js:1153:25)
+2024-01-12 16:41:28.612 ERROR (MainThread) [frontend.js.latest.202401040] Uncaught error from Chrome 120.0.0.0 on Windows 10
+TypeError: Cannot read properties of undefined (reading 'label')
+title: (src/panels/lovelace/cards/energy/common/energy-chart-options.ts:122:33)
+call (src/plugins/plugin.tooltip.js:441:33)
+invokeCallbackWithFallback (src/plugins/plugin.tooltip.js:530:18)
+getTitle (src/plugins/plugin.tooltip.js:647:24)
+update (src/plugins/plugin.tooltip.js:1160:13)
+handleEvent (src/plugins/plugin.tooltip.js:1261:24)
+apply (src/helpers/helpers.core.ts:109:14)
+method (src/core/core.plugins.js:60:23)
+_notify (src/core/core.plugins.js:42:24)
+notify (src/core/core.controller.js:1153:25)
+2024-01-12 16:41:28.613 ERROR (MainThread) [frontend.js.latest.202401040] Uncaught error from Chrome 120.0.0.0 on Windows 10
+TypeError: Cannot read properties of undefined (reading 'label')
+title: (src/panels/lovelace/cards/energy/common/energy-chart-options.ts:122:33)
+call (src/plugins/plugin.tooltip.js:441:33)
+invokeCallbackWithFallback (src/plugins/plugin.tooltip.js:530:18)
+getTitle (src/plugins/plugin.tooltip.js:647:24)
+update (src/plugins/plugin.tooltip.js:1160:13)
+handleEvent (src/plugins/plugin.tooltip.js:1261:24)
+apply (src/helpers/helpers.core.ts:109:14)
+method (src/core/core.plugins.js:60:23)
+_notify (src/core/core.plugins.js:42:24)
+notify (src/core/core.controller.js:1153:25)
+2024-01-12 16:41:28.613 ERROR (MainThread) [frontend.js.latest.202401040] Uncaught error from Chrome 120.0.0.0 on Windows 10
+TypeError: Cannot read properties of undefined (reading 'label')
+title: (src/panels/lovelace/cards/energy/common/energy-chart-options.ts:122:33)
+call (src/plugins/plugin.tooltip.js:441:33)
+invokeCallbackWithFallback (src/plugins/plugin.tooltip.js:530:18)
+getTitle (src/plugins/plugin.tooltip.js:647:24)
+update (src/plugins/plugin.tooltip.js:1160:13)
+handleEvent (src/plugins/plugin.tooltip.js:1261:24)
+apply (src/helpers/helpers.core.ts:109:14)
+method (src/core/core.plugins.js:60:23)
+_notify (src/core/core.plugins.js:42:24)
+notify (src/core/core.controller.js:1153:25)
+2024-01-12 16:41:28.614 ERROR (MainThread) [frontend.js.latest.202401040] Uncaught error from Chrome 120.0.0.0 on Windows 10
+TypeError: Cannot read properties of undefined (reading 'label')
+title: (src/panels/lovelace/cards/energy/common/energy-chart-options.ts:122:33)
+call (src/plugins/plugin.tooltip.js:441:33)
+invokeCallbackWithFallback (src/plugins/plugin.tooltip.js:530:18)
+getTitle (src/plugins/plugin.tooltip.js:647:24)
+update (src/plugins/plugin.tooltip.js:1160:13)
+handleEvent (src/plugins/plugin.tooltip.js:1261:24)
+apply (src/helpers/helpers.core.ts:109:14)
+method (src/core/core.plugins.js:60:23)
+_notify (src/core/core.plugins.js:42:24)
+notify (src/core/core.controller.js:1153:25)
+2024-01-12 16:41:28.615 ERROR (MainThread) [frontend.js.latest.202401040] Uncaught error from Chrome 120.0.0.0 on Windows 10
+TypeError: Cannot read properties of undefined (reading 'label')
+title: (src/panels/lovelace/cards/energy/common/energy-chart-options.ts:122:33)
+call (src/plugins/plugin.tooltip.js:441:33)
+invokeCallbackWithFallback (src/plugins/plugin.tooltip.js:530:18)
+getTitle (src/plugins/plugin.tooltip.js:647:24)
+update (src/plugins/plugin.tooltip.js:1160:13)
+handleEvent (src/plugins/plugin.tooltip.js:1261:24)
+apply (src/helpers/helpers.core.ts:109:14)
+method (src/core/core.plugins.js:60:23)
+_notify (src/core/core.plugins.js:42:24)
+notify (src/core/core.controller.js:1153:25)
+2024-01-12 16:41:28.621 ERROR (MainThread) [frontend.js.latest.202401040] Uncaught error from Chrome 120.0.0.0 on Windows 10
+TypeError: Cannot read properties of undefined (reading 'label')
+title: (src/panels/lovelace/cards/energy/common/energy-chart-options.ts:122:33)
+call (src/plugins/plugin.tooltip.js:441:33)
+invokeCallbackWithFallback (src/plugins/plugin.tooltip.js:530:18)
+getTitle (src/plugins/plugin.tooltip.js:647:24)
+update (src/plugins/plugin.tooltip.js:1160:13)
+handleEvent (src/plugins/plugin.tooltip.js:1261:24)
+apply (src/helpers/helpers.core.ts:109:14)
+method (src/core/core.plugins.js:60:23)
+_notify (src/core/core.plugins.js:42:24)
+notify (src/core/core.controller.js:1153:25)
+2024-01-12 16:41:28.622 ERROR (MainThread) [frontend.js.latest.202401040] Uncaught error from Chrome 120.0.0.0 on Windows 10
+TypeError: Cannot read properties of undefined (reading 'label')
+title: (src/panels/lovelace/cards/energy/common/energy-chart-options.ts:122:33)
+call (src/plugins/plugin.tooltip.js:441:33)
+invokeCallbackWithFallback (src/plugins/plugin.tooltip.js:530:18)
+getTitle (src/plugins/plugin.tooltip.js:647:24)
+update (src/plugins/plugin.tooltip.js:1160:13)
+handleEvent (src/plugins/plugin.tooltip.js:1261:24)
+apply (src/helpers/helpers.core.ts:109:14)
+method (src/core/core.plugins.js:60:23)
+_notify (src/core/core.plugins.js:42:24)
+notify (src/core/core.controller.js:1153:25)
+2024-01-12 16:41:28.623 ERROR (MainThread) [frontend.js.latest.202401040] Uncaught error from Chrome 120.0.0.0 on Windows 10
+TypeError: Cannot read properties of undefined (reading 'label')
+title: (src/panels/lovelace/cards/energy/common/energy-chart-options.ts:122:33)
+call (src/plugins/plugin.tooltip.js:441:33)
+invokeCallbackWithFallback (src/plugins/plugin.tooltip.js:530:18)
+getTitle (src/plugins/plugin.tooltip.js:647:24)
+update (src/plugins/plugin.tooltip.js:1160:13)
+handleEvent (src/plugins/plugin.tooltip.js:1261:24)
+apply (src/helpers/helpers.core.ts:109:14)
+method (src/core/core.plugins.js:60:23)
+_notify (src/core/core.plugins.js:42:24)
+notify (src/core/core.controller.js:1153:25)
+2024-01-12 16:41:28.623 ERROR (MainThread) [frontend.js.latest.202401040] Uncaught error from Chrome 120.0.0.0 on Windows 10
+TypeError: Cannot read properties of undefined (reading 'label')
+title: (src/panels/lovelace/cards/energy/common/energy-chart-options.ts:122:33)
+call (src/plugins/plugin.tooltip.js:441:33)
+invokeCallbackWithFallback (src/plugins/plugin.tooltip.js:530:18)
+getTitle (src/plugins/plugin.tooltip.js:647:24)
+update (src/plugins/plugin.tooltip.js:1160:13)
+handleEvent (src/plugins/plugin.tooltip.js:1261:24)
+apply (src/helpers/helpers.core.ts:109:14)
+method (src/core/core.plugins.js:60:23)
+_notify (src/core/core.plugins.js:42:24)
+notify (src/core/core.controller.js:1153:25)
+2024-01-12 16:41:31.087 ERROR (MainThread) [frontend.js.latest.202401040] Uncaught error from Chrome 120.0.0.0 on Windows 10
+TypeError: Cannot read properties of undefined (reading 'label')
+title: (src/panels/lovelace/cards/energy/common/energy-chart-options.ts:122:33)
+call (src/plugins/plugin.tooltip.js:441:33)
+invokeCallbackWithFallback (src/plugins/plugin.tooltip.js:530:18)
+getTitle (src/plugins/plugin.tooltip.js:647:24)
+update (src/plugins/plugin.tooltip.js:1160:13)
+handleEvent (src/plugins/plugin.tooltip.js:1261:24)
+apply (src/helpers/helpers.core.ts:109:14)
+method (src/core/core.plugins.js:60:23)
+_notify (src/core/core.plugins.js:42:24)
+notify (src/core/core.controller.js:1153:25)
+2024-01-12 16:41:50.792 WARNING (DbWorker_0) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-12 16:41:57.096 ERROR (MainThread) [frontend.js.latest.202401040] Uncaught error from Chrome 120.0.0.0 on Windows 10
+TypeError: Cannot read properties of undefined (reading 'label')
+title: (src/panels/lovelace/cards/energy/common/energy-chart-options.ts:122:33)
+call (src/plugins/plugin.tooltip.js:441:33)
+invokeCallbackWithFallback (src/plugins/plugin.tooltip.js:530:18)
+getTitle (src/plugins/plugin.tooltip.js:647:24)
+update (src/plugins/plugin.tooltip.js:1160:13)
+handleEvent (src/plugins/plugin.tooltip.js:1261:24)
+apply (src/helpers/helpers.core.ts:109:14)
+method (src/core/core.plugins.js:60:23)
+_notify (src/core/core.plugins.js:42:24)
+notify (src/core/core.controller.js:1153:25)
+2024-01-12 16:41:57.152 ERROR (MainThread) [frontend.js.latest.202401040] Uncaught error from Chrome 120.0.0.0 on Windows 10
+TypeError: Cannot read properties of undefined (reading 'label')
+title: (src/panels/lovelace/cards/energy/common/energy-chart-options.ts:122:33)
+call (src/plugins/plugin.tooltip.js:441:33)
+invokeCallbackWithFallback (src/plugins/plugin.tooltip.js:530:18)
+getTitle (src/plugins/plugin.tooltip.js:647:24)
+update (src/plugins/plugin.tooltip.js:1160:13)
+handleEvent (src/plugins/plugin.tooltip.js:1261:24)
+apply (src/helpers/helpers.core.ts:109:14)
+method (src/core/core.plugins.js:60:23)
+_notify (src/core/core.plugins.js:42:24)
+notify (src/core/core.controller.js:1153:25)
+2024-01-12 16:41:57.245 ERROR (MainThread) [frontend.js.latest.202401040] Uncaught error from Chrome 120.0.0.0 on Windows 10
+TypeError: Cannot read properties of undefined (reading 'label')
+title: (src/panels/lovelace/cards/energy/common/energy-chart-options.ts:122:33)
+call (src/plugins/plugin.tooltip.js:441:33)
+invokeCallbackWithFallback (src/plugins/plugin.tooltip.js:530:18)
+getTitle (src/plugins/plugin.tooltip.js:647:24)
+update (src/plugins/plugin.tooltip.js:1160:13)
+handleEvent (src/plugins/plugin.tooltip.js:1261:24)
+apply (src/helpers/helpers.core.ts:109:14)
+method (src/core/core.plugins.js:60:23)
+_notify (src/core/core.plugins.js:42:24)
+notify (src/core/core.controller.js:1153:25)
+2024-01-12 16:41:57.379 ERROR (MainThread) [frontend.js.latest.202401040] Uncaught error from Chrome 120.0.0.0 on Windows 10
+TypeError: Cannot read properties of undefined (reading 'label')
+title: (src/panels/lovelace/cards/energy/common/energy-chart-options.ts:122:33)
+call (src/plugins/plugin.tooltip.js:441:33)
+invokeCallbackWithFallback (src/plugins/plugin.tooltip.js:530:18)
+getTitle (src/plugins/plugin.tooltip.js:647:24)
+update (src/plugins/plugin.tooltip.js:1160:13)
+handleEvent (src/plugins/plugin.tooltip.js:1261:24)
+apply (src/helpers/helpers.core.ts:109:14)
+method (src/core/core.plugins.js:60:23)
+_notify (src/core/core.plugins.js:42:24)
+notify (src/core/core.controller.js:1153:25)
+2024-01-12 16:41:57.426 ERROR (MainThread) [frontend.js.latest.202401040] Uncaught error from Chrome 120.0.0.0 on Windows 10
+TypeError: Cannot read properties of undefined (reading 'label')
+title: (src/panels/lovelace/cards/energy/common/energy-chart-options.ts:122:33)
+call (src/plugins/plugin.tooltip.js:441:33)
+invokeCallbackWithFallback (src/plugins/plugin.tooltip.js:530:18)
+getTitle (src/plugins/plugin.tooltip.js:647:24)
+update (src/plugins/plugin.tooltip.js:1160:13)
+handleEvent (src/plugins/plugin.tooltip.js:1261:24)
+apply (src/helpers/helpers.core.ts:109:14)
+method (src/core/core.plugins.js:60:23)
+_notify (src/core/core.plugins.js:42:24)
+notify (src/core/core.controller.js:1153:25)
+2024-01-12 16:42:02.311 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-12 16:42:02.955 ERROR (MainThread) [frontend.js.latest.202401040] Uncaught error from Chrome 120.0.0.0 on Windows 10
+TypeError: Cannot read properties of undefined (reading 'label')
+title: (src/panels/lovelace/cards/energy/common/energy-chart-options.ts:122:33)
+call (src/plugins/plugin.tooltip.js:441:33)
+invokeCallbackWithFallback (src/plugins/plugin.tooltip.js:530:18)
+getTitle (src/plugins/plugin.tooltip.js:647:24)
+update (src/plugins/plugin.tooltip.js:1160:13)
+handleEvent (src/plugins/plugin.tooltip.js:1261:24)
+apply (src/helpers/helpers.core.ts:109:14)
+method (src/core/core.plugins.js:60:23)
+_notify (src/core/core.plugins.js:42:24)
+notify (src/core/core.controller.js:1153:25)
+2024-01-12 16:42:03.180 ERROR (MainThread) [frontend.js.latest.202401040] Uncaught error from Chrome 120.0.0.0 on Windows 10
+TypeError: Cannot read properties of undefined (reading 'label')
+title: (src/panels/lovelace/cards/energy/common/energy-chart-options.ts:122:33)
+call (src/plugins/plugin.tooltip.js:441:33)
+invokeCallbackWithFallback (src/plugins/plugin.tooltip.js:530:18)
+getTitle (src/plugins/plugin.tooltip.js:647:24)
+update (src/plugins/plugin.tooltip.js:1160:13)
+handleEvent (src/plugins/plugin.tooltip.js:1261:24)
+apply (src/helpers/helpers.core.ts:109:14)
+method (src/core/core.plugins.js:60:23)
+_notify (src/core/core.plugins.js:42:24)
+notify (src/core/core.controller.js:1153:25)
+2024-01-12 16:42:03.552 ERROR (MainThread) [frontend.js.latest.202401040] Uncaught error from Chrome 120.0.0.0 on Windows 10
+TypeError: Cannot read properties of undefined (reading 'label')
+title: (src/panels/lovelace/cards/energy/common/energy-chart-options.ts:122:33)
+call (src/plugins/plugin.tooltip.js:441:33)
+invokeCallbackWithFallback (src/plugins/plugin.tooltip.js:530:18)
+getTitle (src/plugins/plugin.tooltip.js:647:24)
+update (src/plugins/plugin.tooltip.js:1160:13)
+handleEvent (src/plugins/plugin.tooltip.js:1261:24)
+apply (src/helpers/helpers.core.ts:109:14)
+method (src/core/core.plugins.js:60:23)
+_notify (src/core/core.plugins.js:42:24)
+notify (src/core/core.controller.js:1153:25)
+2024-01-12 16:42:03.606 ERROR (MainThread) [frontend.js.latest.202401040] Uncaught error from Chrome 120.0.0.0 on Windows 10
+TypeError: Cannot read properties of undefined (reading 'label')
+title: (src/panels/lovelace/cards/energy/common/energy-chart-options.ts:122:33)
+call (src/plugins/plugin.tooltip.js:441:33)
+invokeCallbackWithFallback (src/plugins/plugin.tooltip.js:530:18)
+getTitle (src/plugins/plugin.tooltip.js:647:24)
+update (src/plugins/plugin.tooltip.js:1160:13)
+handleEvent (src/plugins/plugin.tooltip.js:1261:24)
+apply (src/helpers/helpers.core.ts:109:14)
+method (src/core/core.plugins.js:60:23)
+_notify (src/core/core.plugins.js:42:24)
+notify (src/core/core.controller.js:1153:25)
+2024-01-12 16:42:03.990 ERROR (MainThread) [frontend.js.latest.202401040] Uncaught error from Chrome 120.0.0.0 on Windows 10
+TypeError: Cannot read properties of undefined (reading 'label')
+title: (src/panels/lovelace/cards/energy/common/energy-chart-options.ts:122:33)
+call (src/plugins/plugin.tooltip.js:441:33)
+invokeCallbackWithFallback (src/plugins/plugin.tooltip.js:530:18)
+getTitle (src/plugins/plugin.tooltip.js:647:24)
+update (src/plugins/plugin.tooltip.js:1160:13)
+handleEvent (src/plugins/plugin.tooltip.js:1261:24)
+apply (src/helpers/helpers.core.ts:109:14)
+method (src/core/core.plugins.js:60:23)
+_notify (src/core/core.plugins.js:42:24)
+notify (src/core/core.controller.js:1153:25)
+2024-01-12 16:42:04.339 ERROR (MainThread) [frontend.js.latest.202401040] Uncaught error from Chrome 120.0.0.0 on Windows 10
+TypeError: Cannot read properties of undefined (reading 'label')
+title: (src/panels/lovelace/cards/energy/common/energy-chart-options.ts:122:33)
+call (src/plugins/plugin.tooltip.js:441:33)
+invokeCallbackWithFallback (src/plugins/plugin.tooltip.js:530:18)
+getTitle (src/plugins/plugin.tooltip.js:647:24)
+update (src/plugins/plugin.tooltip.js:1160:13)
+handleEvent (src/plugins/plugin.tooltip.js:1261:24)
+apply (src/helpers/helpers.core.ts:109:14)
+method (src/core/core.plugins.js:60:23)
+_notify (src/core/core.plugins.js:42:24)
+notify (src/core/core.controller.js:1153:25)
+2024-01-12 16:42:04.452 ERROR (MainThread) [frontend.js.latest.202401040] Uncaught error from Chrome 120.0.0.0 on Windows 10
+TypeError: Cannot read properties of undefined (reading 'label')
+title: (src/panels/lovelace/cards/energy/common/energy-chart-options.ts:122:33)
+call (src/plugins/plugin.tooltip.js:441:33)
+invokeCallbackWithFallback (src/plugins/plugin.tooltip.js:530:18)
+getTitle (src/plugins/plugin.tooltip.js:647:24)
+update (src/plugins/plugin.tooltip.js:1160:13)
+handleEvent (src/plugins/plugin.tooltip.js:1261:24)
+apply (src/helpers/helpers.core.ts:109:14)
+method (src/core/core.plugins.js:60:23)
+_notify (src/core/core.plugins.js:42:24)
+notify (src/core/core.controller.js:1153:25)
+2024-01-12 16:42:05.104 ERROR (MainThread) [frontend.js.latest.202401040] Uncaught error from Chrome 120.0.0.0 on Windows 10
+TypeError: Cannot read properties of undefined (reading 'label')
+title: (src/panels/lovelace/cards/energy/common/energy-chart-options.ts:122:33)
+call (src/plugins/plugin.tooltip.js:441:33)
+invokeCallbackWithFallback (src/plugins/plugin.tooltip.js:530:18)
+getTitle (src/plugins/plugin.tooltip.js:647:24)
+update (src/plugins/plugin.tooltip.js:1160:13)
+handleEvent (src/plugins/plugin.tooltip.js:1261:24)
+apply (src/helpers/helpers.core.ts:109:14)
+method (src/core/core.plugins.js:60:23)
+_notify (src/core/core.plugins.js:42:24)
+notify (src/core/core.controller.js:1153:25)
+2024-01-12 16:42:20.794 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-12 16:42:50.790 WARNING (DbWorker_2) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-12 16:43:02.667 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-12 16:43:20.792 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-12 16:43:50.796 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-12 16:44:02.078 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-12 16:44:20.793 WARNING (DbWorker_1) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-12 16:44:50.789 WARNING (DbWorker_3) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
+2024-01-12 16:45:00.472 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities switch.shellyplus1pm_a8032abae930_switch_0 are missing or not currently available
+2024-01-12 16:45:03.025 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states'. (python-requests/2.25.1)
+2024-01-12 16:45:03.087 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (127.0.0.1). Requested URL: '/api/states/sensor.shellyswitch25_b94fa2_channel_2_energy'. (python-requests/2.25.1)
+2024-01-12 16:45:03.521 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (::1). Requested URL: '/api/states/sensor.temperatur'. (python-requests/2.25.1)
+2024-01-12 16:45:03.540 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from localhost (::1). Requested URL: '/api/states/sensor.luftfeuchtigkeit'. (python-requests/2.25.1)
+2024-01-12 16:45:20.798 WARNING (DbWorker_2) [homeassistant.components.sql.sensor] Select SUM(ROUND((statemax-statemin)*1000, 2)) as state,day FROM (
+
+
+Select MAX(statistics.sum) as statemax, MIN(statistics.sum) as statemin, date(created_ts, 'unixepoch') as day from statistics INNER JOIN statistics_meta ON
+	statistics.metadata_id = statistics_meta.id
+WHERE statistics_meta.statistic_id='sensor.shellyswitch25_b94fa2_channel_2_energy'
+AND created_ts >= strftime('%s',datetime('now', '-1 day', 'start of day'))
+AND created_ts < strftime('%s',datetime('now', 'start of day'))
+
+
+AND statistics.sum != 'unavailable'
+Group by day
+) LIMIT 1; returned no results
